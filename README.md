@@ -4,7 +4,7 @@ Xamarin Forms Calculator
 
 Tizen
 
-![ex_screenshot](http://cfile2.uf.tistory.com/image/24306B3659283CEB37F683)
+![ex_screenshot](http://cfile21.uf.tistory.com/image/2611B84F592926D2125340)
 
 Android
 
