@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:XamarinFormsStudy;assembly=XamarinFormsStudy"
+             x:Class="XamarinFormsStudy.CalcPage">
+
+    <Grid HorizontalOptions="Center" VerticalOptions="Center">
+        <!--그리드에 바인딩될 모델을 설정합니다.-->
+        <Grid.BindingContext>
+            <local:StudyViewModel/>
+        </Grid.BindingContext>
+        <!--계산기의 기본 레이아웃을 잡습니다. row 6, col 4-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <!--상단에 계산기 인걸 표시해줍니다. "Calc"-->
+         <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Frame Grid.Column="0">
+                <Label Text="Calc"
+                       HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                       IsVisible="True" FontAttributes="Bold" TextColor="Black"/>
+            </Frame>
+        </Grid>
+
+        <!--가장 윗줄인 숫자가 보여질 영역과 삭제, 초기화 버튼을 위치시킵니다.-->
+        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <Frame Grid.Column="0" OutlineColor="Accent">
+                <Label Text="{Binding DisplayText}"/>
+            </Frame>
+            
+            <!--여기서 각버튼마다 model 에 정의된 명령을 연결시켜주었습니다.-->
+            <Button Text="＜"   Command="{Binding DeleteCharCommand}"   Grid.Column="1" BorderWidth="0"/>
+            <Button Text="C"    Command="{Binding ClearCommand}"        Grid.Column="2" BorderWidth="0"/>
+        </Grid>
+        <!--
+        숫자와 연산기호를 정의합니다.
+        숫자와 연산기호 또한 model 에 정의된 명령을 연결시켜줍니다.
+        -->
+        <Button Text="1" Command="{Binding AddCharCommand}" CommandParameter="1" Grid.Row="2" Grid.Column="0"/>
+        <Button Text="2" Command="{Binding AddCharCommand}" CommandParameter="2" Grid.Row="2" Grid.Column="1"/>
+        <Button Text="3" Command="{Binding AddCharCommand}" CommandParameter="3" Grid.Row="2" Grid.Column="2"/>
+        <Button Text="+" Command="{Binding OperationCommand}" CommandParameter="+" Grid.Row="2" Grid.Column="3"/>
+        
+        <Button Text="4" Command="{Binding AddCharCommand}" CommandParameter="4" Grid.Row="3" Grid.Column="0"/>
+        <Button Text="5" Command="{Binding AddCharCommand}" CommandParameter="5" Grid.Row="3" Grid.Column="1"/>
+        <Button Text="6" Command="{Binding AddCharCommand}" CommandParameter="6" Grid.Row="3" Grid.Column="2"/>
+        <Button Text="-" Command="{Binding OperationCommand}" CommandParameter="-" Grid.Row="3" Grid.Column="3"/>
+        
+        <Button Text="7" Command="{Binding AddCharCommand}" CommandParameter="7" Grid.Row="4" Grid.Column="0"/>
+        <Button Text="8" Command="{Binding AddCharCommand}" CommandParameter="8" Grid.Row="4" Grid.Column="1"/>
+        <Button Text="9" Command="{Binding AddCharCommand}" CommandParameter="9" Grid.Row="4" Grid.Column="2"/>
+        <Button Text="*" Command="{Binding OperationCommand}" CommandParameter="*" Grid.Row="4" Grid.Column="3"/>
+        
+        <Button Text="0" Command="{Binding AddCharCommand}" CommandParameter="0" Grid.Row="5" Grid.Column="0"/>
+        <Button Text="." Command="{Binding AddCharCommand}" CommandParameter="." Grid.Row="5" Grid.Column="1"/>
+        <Button Text="=" Command="{Binding CalcCommand}" CommandParameter="=" Grid.Row="5" Grid.Column="2"/>
+        <Button Text="/" Command="{Binding OperationCommand}" CommandParameter="/" Grid.Row="5" Grid.Column="3"/>
+
+    </Grid>
+</ContentPage>
