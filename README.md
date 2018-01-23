@@ -1,4 +1,4 @@
-# XamarinFormsStudy
+# XamarinFormsStudy-Calculator
 
 Xamarin Forms Calculator
 
